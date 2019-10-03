@@ -3,7 +3,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.jsp">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
@@ -25,53 +25,15 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Monitoring
+        Study
       </div>
 
       <!-- Nav Item - System -->
       <li class="nav-item">
-        <a class="nav-link" href="system.jsp">
+        <a class="nav-link" href="test01.jsp">
           <i class="fas fa-fw fa-cog"></i>
-          <span>System</span>
+          <span>test01</span>
         </a>
-      </li>
-
-      <!-- Nav Item - Service -->
-      <li class="nav-item">
-        <a class="nav-link" href="service.jsp">
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>Service</span>
-        </a>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Control
-      </div>
-
-      <!-- Nav Item - Server -->
-      <li class="nav-item">
-        <a class="nav-link" href="server.jsp">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Server</span>
-        </a>
-      </li>
-
-      <!-- Nav Item - Switch -->
-      <li class="nav-item">
-        <a class="nav-link" href="switch.jsp">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Switch</span></a>
-      </li>
-      
-      <!-- Nav Item - Storage -->
-      <li class="nav-item">
-        <a class="nav-link" href="storage.jsp">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Storage</span></a>
       </li>
 
       <!-- Divider -->
