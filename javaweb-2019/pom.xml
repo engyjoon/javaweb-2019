@@ -26,6 +26,12 @@
 			<artifactId>postgresql</artifactId>
 			<version>42.2.8</version>
 		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<finalName>javaweb-2019</finalName>
