@@ -9,8 +9,6 @@
 	private static final String DB_NAME = "zabbix";
 	private static final String DB_USER = "zabbix";
 	private static final String DB_PASS = "zabbix";
-	
-	ArrayList<Host> listHost = new ArrayList<>();
 %>
 
 <%
@@ -20,6 +18,8 @@
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 
+	ArrayList<Host> listHost = new ArrayList<>();
+	
 	try {
 		Class.forName("org.postgresql.Driver");
 		conn = DriverManager.getConnection(DB_URL + "/" + DB_NAME, DB_USER, DB_PASS);
