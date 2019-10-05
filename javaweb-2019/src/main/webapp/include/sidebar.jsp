@@ -28,11 +28,19 @@
         Study
       </div>
 
-      <!-- Nav Item - System -->
+      <!-- Nav Item - test01 -->
       <li class="nav-item">
         <a class="nav-link" href="test01.jsp">
           <i class="fas fa-fw fa-cog"></i>
           <span>test01</span>
+        </a>
+      </li>
+      
+      <!-- Nav Item - test02 -->
+      <li class="nav-item">
+        <a class="nav-link" href="test02.jsp">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>test02</span>
         </a>
       </li>
 
