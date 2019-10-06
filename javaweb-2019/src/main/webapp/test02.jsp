@@ -13,8 +13,6 @@
 %>
 
 <%
-	Class.forName("org.postgresql.Driver");
-
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
