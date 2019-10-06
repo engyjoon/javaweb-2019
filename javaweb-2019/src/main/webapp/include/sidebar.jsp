@@ -43,6 +43,14 @@
           <span>test02</span>
         </a>
       </li>
+      
+      <!-- Nav Item - test03 -->
+      <li class="nav-item">
+        <a class="nav-link" href="hostList">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>test03</span>
+        </a>
+      </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
