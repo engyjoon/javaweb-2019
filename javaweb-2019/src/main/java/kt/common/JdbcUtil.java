@@ -12,7 +12,7 @@ public class JdbcUtil {
 	private static final String DB_USER = "zabbix";
 	private static final String DB_PASS = "zabbix";
 	
-	public Connection getConnection() {
+	public static Connection getConnection() {
 		Connection conn = null;
 		
 		try {
