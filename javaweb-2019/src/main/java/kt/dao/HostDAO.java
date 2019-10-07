@@ -11,11 +11,6 @@ import kt.common.JdbcUtil;
 import kt.vo.Host;
 
 public class HostDAO {
-
-	private static final String DB_URL = "jdbc:postgresql://192.168.56.101:5432";
-	private static final String DB_NAME = "zabbix";
-	private static final String DB_USER = "zabbix";
-	private static final String DB_PASS = "zabbix";
 	
 	Connection conn = null;
 	PreparedStatement pstmt = null;
