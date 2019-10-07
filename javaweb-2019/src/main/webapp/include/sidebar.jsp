@@ -46,7 +46,7 @@
       
       <!-- Nav Item - test03 -->
       <li class="nav-item">
-        <a class="nav-link" href="hostList">
+        <a class="nav-link" href="hostList.do">
           <i class="fas fa-fw fa-cog"></i>
           <span>test03</span>
         </a>
