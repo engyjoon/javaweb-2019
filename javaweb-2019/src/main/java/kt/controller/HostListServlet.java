@@ -33,9 +33,7 @@ public class HostListServlet extends HttpServlet {
 		HostDAO hostDAO = new HostDAO();
 		
 		request.setAttribute("listHost", hostDAO.selectHostList());
-			
-		RequestDispatcher rd = request.getRequestDispatcher("/test03.jsp");
-		rd.include(request, response);
+		request.setAttribute("viewUrl", "test03.jsp");
 	}
 
 	/**
