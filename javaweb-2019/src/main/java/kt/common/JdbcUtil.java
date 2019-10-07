@@ -26,26 +26,14 @@ public class JdbcUtil {
 	}
 	
 	public static void close(Connection conn) {
-		try {
-			conn.close();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+		try { if(conn != null) conn.close(); } catch(Exception e) { e.printStackTrace(); }
 	}
 	
 	public static void close(PreparedStatement pstmt) {
-		try {
-			pstmt.close();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+		try { if(pstmt != null) pstmt.close(); } catch(Exception e) { e.printStackTrace(); }
 	}
 	
 	public static void close(ResultSet rs) {
-		try {
-			rs.close();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+		try { if(rs != null) rs.close(); } catch(Exception e) { e.printStackTrace(); }
 	}
 }
