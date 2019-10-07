@@ -25,8 +25,7 @@ public class HostDAO {
 		ArrayList<Host> listHost = new ArrayList<>();
 		
 		try {
-			Class.forName("org.postgresql.Driver");
-			conn = DriverManager.getConnection(DB_URL + "/" + DB_NAME, DB_USER, DB_PASS);
+			conn = JdbcUtil.getConnection();
 		
 			StringBuffer query = new StringBuffer();
 			query.append("select hostid, host, status, available, name, flags ");
