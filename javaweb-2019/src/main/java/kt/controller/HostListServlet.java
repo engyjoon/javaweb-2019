@@ -1,7 +1,6 @@
 package kt.controller;
 
 import java.io.IOException;
-import java.sql.DriverManager;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kt.dao.HostDAO;
-import kt.vo.Host;
 
 /**
  * Servlet implementation class HostListServlet
