@@ -7,8 +7,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
-
+import kt.common.JdbcUtil;
 import kt.vo.Host;
 
 public class HostDAO {
@@ -51,9 +50,9 @@ public class HostDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			try{ if(rs != null) rs.close(); } catch(Exception e) {}
-			try{ if(pstmt != null) pstmt.close(); } catch(Exception e) {}
-			try{ if(conn != null) conn.close(); } catch(Exception e) {}
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
 		}
 		
 		return listHost;
