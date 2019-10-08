@@ -3,7 +3,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.jsp">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="${contextPath}/index.jsp">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
@@ -15,7 +15,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.jsp">
+        <a class="nav-link" href="${contextPath}/index.jsp">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -49,6 +49,14 @@
         <a class="nav-link" href="hostList.do">
           <i class="fas fa-fw fa-cog"></i>
           <span>test03</span>
+        </a>
+      </li>
+      
+      <!-- Nav Item - test03 -->
+      <li class="nav-item">
+        <a class="nav-link" href="${contextPath}/zabbix/host/list.do">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Host List</span>
         </a>
       </li>
 
