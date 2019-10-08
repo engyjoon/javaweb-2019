@@ -3,8 +3,9 @@ package kt.controller;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class DispatcherServlet
  */
-@WebServlet("*.do")
 public class DispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -23,6 +23,12 @@ public class DispatcherServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
+    
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+    	ServletContext sc = config.getServletContext();
+    	sc.setAttribute("contextPath", sc.getContextPath());
+    }
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -32,8 +38,14 @@ public class DispatcherServlet extends HttpServlet {
 		try {
 			String pageControllerPath = null;
 			
-			if ("/hostList.do".equals(servletPath)) {
+			if ("/hostList.do".contentEquals(servletPath)) {
 				pageControllerPath = "/hostList";
+			} else if ("/zabbix/host/list.do".contentEquals(servletPath)) {
+				pageControllerPath = "/zabbix/host/list";
+			} else if ("/zabbix/item/list.do".contentEquals(servletPath)) {
+				pageControllerPath = "/zabbix/item/list";
+			} else if ("/zabbix/history/list.do".contentEquals(servletPath)) {
+				pageControllerPath = "/zabbix/history/list";
 			}
 			
 			RequestDispatcher rd = req.getRequestDispatcher(pageControllerPath);
