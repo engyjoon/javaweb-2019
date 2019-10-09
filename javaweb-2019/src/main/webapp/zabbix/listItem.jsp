@@ -92,7 +92,9 @@
 					      <td>${item.status}</td>
 					      <td>${item.valueType}</td>
 					      <td>
-					      	<c:if test="${item.valueType == 0 or item.valueType == 3}"><i class="fas fa-chart-bar"></i></c:if>
+					      	<c:if test="${item.valueType == 0 or item.valueType == 3}">
+					      		<a href="${contextPath}/zabbix/history/graph.do?itemid=${item.itemid}&valuetype=${item.valueType}&hostid=${host.hostid}"><i class="fas fa-chart-bar"></i></a>
+					      	</c:if>
 					      </td>
 					    </tr>
 					    </c:forEach>
