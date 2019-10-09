@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kt.common.JdbcUtil;
+import kt.vo.Graph;
 import kt.vo.History;
 import kt.vo.Item;
 
@@ -64,7 +65,7 @@ public class HistoryDAO {
 		return result;
 	}
 	
-	public List<History> selectJsonHistoryListByItem(Item item) {
+	public List<Graph> selectJsonHistoryListByItem(Item item) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -77,7 +78,7 @@ public class HistoryDAO {
 		query.append("  and t1.itemid = ? ");
 		query.append("order by t2.clock");
 		
-		ArrayList<History> result = new ArrayList<>();
+		ArrayList<Graph> result = new ArrayList<>();
 		
 		try {
 			conn = JdbcUtil.getConnection();
@@ -86,15 +87,15 @@ public class HistoryDAO {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				History history = new History();
+				Graph graph = new Graph();
 				
 				Instant instant = Instant.ofEpochSecond(rs.getInt("CLOCK"));
 				ZonedDateTime zdt = instant.atZone(ZoneId.of("Asia/Seoul"));
 				
-				history.setClock(zdt.format(DateTimeFormatter.ISO_DATE_TIME));
-				history.setValue(getHistoryValue(rs, item.getValueType()).toString());
+				graph.setX(zdt.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME));
+				graph.setY(getHistoryValue(rs, item.getValueType()).toString());
 				
-				result.add(history);
+				result.add(graph);
 			}
 			
 		} catch (Exception e) {
@@ -121,7 +122,7 @@ public class HistoryDAO {
 	private Object getHistoryValue(ResultSet rs, int valueType) throws SQLException {
 		Object result = null;
 		
-		if(valueType == INTEGER) result = rs.getInt("VALUE");
+		if(valueType == INTEGER) result = rs.getBigDecimal("VALUE");
 		else if(valueType == FLOAT) result = rs.getDouble("VALUE");
 		else if(valueType == CHARACTER) result = rs.getString("VALUE");
 		
