@@ -47,6 +47,8 @@ public class DispatcherServlet extends HttpServlet {
 				pageControllerPath = "/zabbix/history/list";
 			} else if ("/zabbix/history/json/list.do".contentEquals(servletPath)) {
 				pageControllerPath = "/zabbix/history/json/list";
+			} else if ("/zabbix/history/graph.do".contentEquals(servletPath)) {
+				pageControllerPath = "/zabbix/history/graph";
 			}
 			
 			RequestDispatcher rd = req.getRequestDispatcher(pageControllerPath);
