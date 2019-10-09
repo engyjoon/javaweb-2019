@@ -32,7 +32,6 @@ public class DispatcherServlet extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setContentType("text/html; charset=UTF-8");
 		String servletPath = req.getServletPath();
 		
 		try {
@@ -46,6 +45,8 @@ public class DispatcherServlet extends HttpServlet {
 				pageControllerPath = "/zabbix/item/list";
 			} else if ("/zabbix/history/list.do".contentEquals(servletPath)) {
 				pageControllerPath = "/zabbix/history/list";
+			} else if ("/zabbix/history/json/list.do".contentEquals(servletPath)) {
+				pageControllerPath = "/zabbix/history/json/list";
 			}
 			
 			RequestDispatcher rd = req.getRequestDispatcher(pageControllerPath);
@@ -53,7 +54,9 @@ public class DispatcherServlet extends HttpServlet {
 			
 			String viewUrl = (String) req.getAttribute("viewUrl");
 			
-			if (viewUrl.startsWith("redirect:")) {
+			if (viewUrl == null) {
+				return;
+			} else if (viewUrl.startsWith("redirect:")) {
 				resp.sendRedirect(viewUrl.substring(9));
 				return;
 			} else {
