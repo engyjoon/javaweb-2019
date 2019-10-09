@@ -43,16 +43,60 @@ public class HistoryDAO {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				History historyVO = new History();
+				History history = new History();
 				
 				Instant instant = Instant.ofEpochSecond(rs.getInt("CLOCK"));
 				ZonedDateTime zdt = instant.atZone(ZoneId.of("Asia/Seoul"));
 				
-				historyVO.setClock(zdt.format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss")));
-				historyVO.setValue(getHistoryValue(rs, item.getValueType()).toString());
+				history.setClock(zdt.format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss")));
+				history.setValue(getHistoryValue(rs, item.getValueType()).toString());
 				
-				result.add(historyVO);
+				result.add(history);
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+		}
+		
+		return result;
+	}
+	
+	public List<History> selectJsonHistoryListByItem(Item item) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		StringBuffer query = new StringBuffer();
+		query.append("select t2.clock, t2.value ");
+		query.append("from items t1, " + getHistoryTable(item.getValueType()) + " t2 ");
+		query.append("where t1.itemid = t2.itemid ");
+		query.append("  and t2.clock > extract(epoch from date_trunc('second', now() - interval '1 hour')) ");
+		query.append("  and t1.itemid = ? ");
+		query.append("order by t2.clock");
+		
+		ArrayList<History> result = new ArrayList<>();
+		
+		try {
+			conn = JdbcUtil.getConnection();
+			pstmt = conn.prepareStatement(query.toString());
+			pstmt.setLong(1, item.getItemid());
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				History history = new History();
+				
+				Instant instant = Instant.ofEpochSecond(rs.getInt("CLOCK"));
+				ZonedDateTime zdt = instant.atZone(ZoneId.of("Asia/Seoul"));
+				
+				history.setClock(zdt.format(DateTimeFormatter.ISO_DATE_TIME));
+				history.setValue(getHistoryValue(rs, item.getValueType()).toString());
+				
+				result.add(history);
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
