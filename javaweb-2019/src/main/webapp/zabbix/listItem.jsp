@@ -78,6 +78,7 @@
 						  <th>Key</th>
 						  <th>Status</th>
 						  <th>Value Type</th>
+						  <th>Graph</th>
 						</tr>
 						</thead>
 						<tbody>
@@ -90,6 +91,9 @@
 					      <td>${item.key}</td>
 					      <td>${item.status}</td>
 					      <td>${item.valueType}</td>
+					      <td>
+					      	<c:if test="${item.valueType == 0 or item.valueType == 3}"><i class="fas fa-chart-bar"></i></c:if>
+					      </td>
 					    </tr>
 					    </c:forEach>
 					    </tbody>
@@ -129,13 +133,6 @@
 
   <!-- Custom scripts for all pages-->
   <script src="${contextPath}/js/sb-admin-2.min.js"></script>
-
-  <!-- Page level plugins -->
-  <script src="${contextPath}/vendor/chart.js/Chart.min.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="${contextPath}/js/demo/chart-area-demo.js"></script>
-  <script src="${contextPath}/js/demo/chart-pie-demo.js"></script>
 
 </body>
 </html>
